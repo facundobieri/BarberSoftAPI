@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Application/Application.csproj" Id="347ed1f6-5225-49c7-ad80-dc787b530421" />
+  <Project Path="BarberSoft/BarberSoft.csproj" />
+  <Project Path="Domain/Domain.csproj" Id="d4f5a0bf-43b1-4333-bcdd-bb6795c5ab76" />
+  <Project Path="Infrastructure/Infrastructure.csproj" Id="710635ef-753a-45ec-b02a-dfd3fd5a698a" />
+</Solution>
