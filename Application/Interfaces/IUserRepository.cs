@@ -1,13 +1,11 @@
 ﻿using Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
     public interface IUserRepository : IBaseRepository<User>
     {
-        Task<User> GetByUsernameAsync(string username);
-        Task<User> GetByEmailAsync(string email);
+        Task<User?> GetByUsernameAsync(string name);
+        Task<User?> GetByEmailAsync(string email);
     }
 }

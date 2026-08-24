@@ -34,7 +34,7 @@ namespace BarberSoft.Controllers
             }
         }
 
-        [HttpPost("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUserAsync(int id, [FromBody] UpdateUserRequest request)
         {
             try
