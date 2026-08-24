@@ -13,7 +13,6 @@ namespace Infrastructure.Persistence
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
         public DbSet<User> Users { get; set; }
 
 
@@ -31,6 +30,18 @@ namespace Infrastructure.Persistence
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            modelBuilder.Entity<Appointment>()
+                .HasOne<Client>()
+                .WithMany()
+                .HasForeignKey(a => a.ClientId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Appointment>()
+                .HasOne<Service>()
+                .WithMany()
+                .HasForeignKey(a => a.ServiceId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

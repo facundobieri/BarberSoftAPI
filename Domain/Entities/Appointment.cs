@@ -19,13 +19,16 @@ namespace Domain.Entities
         [Required]
         public DateTime End { get; set; }
 
-        //[Required]
-        //[ForeignKey("Client")]
-        //public int ClientId { get; set; }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+        [Required]
+        [ForeignKey("Client")]
+        public int ClientId { get; set; }
 
-        //[Required]
-        //[ForeignKey("Service")]
-        //public int ServiceId { get; set; }
+        [Required]
+        [ForeignKey("Service")]
+        public int ServiceId { get; set; }
+
+        [Required]
+        public decimal TotalAmount { get; set; }
 
         [Required]
         public AppointmentStatus Status { get; set; } 

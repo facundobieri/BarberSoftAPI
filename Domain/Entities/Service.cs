@@ -22,6 +22,7 @@ namespace Domain.Entities
         [Required]
         public int DurationInMinutes { get; set; }
 
+        [Required]
         public bool IsActive { get; set; }
     }
 }
