@@ -9,20 +9,20 @@ namespace BarberSoft.Controllers
     [ApiController]
     public class ClientController : ControllerBase
     {
-        private readonly IClientService _service;
-        public ClientController(IClientService service) => _service = service;
+        private readonly IClientService _clientService;
+        public ClientController(IClientService clientService) => _clientService = clientService;
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var clients = await _service.GetAllAsync();
+            var clients = await _clientService.GetAllAsync();
             return Ok(clients);
         }
 
         [HttpGet("byname/{name}")]
         public async Task<IActionResult> GetByName(string name)
         {
-            var client = await _service.GetByNameAsync(name);
+            var client = await _clientService.GetByNameAsync(name);
             if (client == null) return NotFound();
             return Ok(client);
         }
@@ -32,7 +32,7 @@ namespace BarberSoft.Controllers
         {
             try
             {
-                var created = await _service.CreateClientAsync(request);
+                var created = await _clientService.CreateClientAsync(request);
                 return CreatedAtAction(nameof(GetByName), new { name = created.Name }, created);
             }
             catch (InvalidOperationException ex)
@@ -44,7 +44,7 @@ namespace BarberSoft.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateClientRequest request)
         {
-            var updated = await _service.UpdateClientAsync(id, request);
+            var updated = await _clientService.UpdateClientAsync(id, request);
             if (updated == null) return NotFound();
             return Ok(updated);
         }
@@ -52,8 +52,8 @@ namespace BarberSoft.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var ok = await _service.DeleteClientAsync(id);
-            if (!ok) return NotFound();
+            var result = await _clientService.DeleteClientAsync(id);
+            if (!result) return NotFound(new { message = "Client not found." });
             return NoContent();
         }
     }

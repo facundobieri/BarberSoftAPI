@@ -20,10 +20,12 @@ builder.Services.AddDbContext<BarberSoftDbContext>(options =>
 // Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 
 // Services
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IServiceService, ServiceService>();
 #endregion
 
 var app = builder.Build();
@@ -33,7 +35,6 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

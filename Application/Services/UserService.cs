@@ -12,10 +12,7 @@ namespace Application.Services
     {
         private IUserRepository _repository;
 
-        public UserService(IUserRepository repository)
-        {
-            _repository = repository;
-        }
+        public UserService(IUserRepository repository) => _repository = repository;
 
         public async Task<UserDto?> GetUserByIdAsync(int id)
         {

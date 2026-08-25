@@ -11,10 +11,7 @@ namespace Application.Services
     {
         private readonly IClientRepository _repository;
 
-        public ClientService(IClientRepository repository)
-        {
-            _repository = repository;
-        }
+        public ClientService(IClientRepository repository) => _repository = repository;
 
         public async Task<IEnumerable<ClientDto>> GetAllAsync()
         {
