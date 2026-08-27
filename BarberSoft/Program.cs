@@ -2,6 +2,7 @@ using Application.Interfaces;
 using Application.Services;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,9 +12,9 @@ builder.Services.AddOpenApi();
 
 #region DbContext Configuration
 
-// Configure SQL Server for local development
+// Configure SQLite 
 builder.Services.AddDbContext<BarberSoftDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 #endregion
 
 #region Dependency Injection
