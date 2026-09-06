@@ -21,6 +21,12 @@ namespace Application.Services
             return user?.MapToDto();
         }
 
+        public async Task<IEnumerable<UserDto>> GetUsersAsync()
+        {
+            var users = await _repository.GetAllAsync();
+            return users.Select(u => u.MapToDto());
+        }
+
         public async Task<UserDto> CreateUserAsync(CreateUserRequest request)
         {
             var existingUsername = await _repository.GetByUsernameAsync(request.Name);
