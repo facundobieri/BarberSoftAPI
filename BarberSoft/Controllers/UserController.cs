@@ -12,6 +12,13 @@ namespace BarberSoft.Controllers
         private readonly IUserService _userService;
         public UserController(IUserService userService) => _userService = userService;
 
+        [HttpGet]
+        public async Task<IActionResult> GetUsersAsync()
+        {
+            var users = await _userService.GetAllUsersAsync();
+            return Ok(users);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id)
         {
